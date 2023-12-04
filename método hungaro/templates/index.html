@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Método Húngaro</title>
+</head>
+<body>
+    <h1>Método Húngaro</h1>
+
+    <form method="post">
+        <h2><label for="nmatriz">Elija la dimensión de la Matriz:</label></h2>
+        <input type="number" id="nmatriz" min="2" name="nmatriz"><br><br>
+        <input type="hidden" name="form_type" value="size_selection">
+        <input type="submit" value="Definir matriz">
+    </form>
+    
+    <!-- Este formulario solo se mostrará si cost_matrix está definida -->
+    {% if cost_matrix %}
+        <form method="post">
+            <h2>Matriz de Costos</h2>
+            <table border="1">
+                {% for i in range(cost_matrix|length) %}
+                    <tr>
+                        {% for j in range(cost_matrix[i]|length) %}
+                            <td><input type="number" id="mcosto" name="cost_{{ i }}_{{ j }}" value="{{ cost_matrix[i][j] }}"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <input type="hidden" name="form_type" value="cost_submission">
+            <input type="hidden" name="matrix_size" value="{{ cost_matrix|length }}">
+            <input type="submit" value="Resolver">
+        </form>
+    {% endif %}  
+    
+    {% if assignment_matrix %}
+        <h2>Matriz de Asignación</h2>
+        <table border="1">
+            {% for row in assignment_matrix %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
