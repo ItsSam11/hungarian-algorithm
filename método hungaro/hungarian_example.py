@@ -39,4 +39,4 @@ def index():
     return render_template('index.html', cost_matrix=cost_matrix, assignment_matrix=assignment_matrix)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
