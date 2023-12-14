@@ -1,6 +1,6 @@
 # Hungarian Algorithm Implementation in Flask
 
-#### Project: Freelance Project - Hungarian Algorithm Implementation in Flask
+#### Freelance Project - Hungarian Algorithm Implementation in Flask
 
 This freelance project is a Flask web application that implements the Hungarian Algorithm for solving assignment problems. It facilitates users in inputting cost matrices and obtaining the optimal resource assignment, offering a practical solution to complex assignment tasks.
 
